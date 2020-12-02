@@ -135,12 +135,32 @@ const articleMaker = function (articleObj) {
   secondParagraph.textContent = articleObj.secondParagraph;
   thirdParagraph.textContent = articleObj.thirdParagraph;
 
-  article.appendChild(title, date, firstParagraph, secondParagraph, thirdParagraph, span);
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(span);
 
   span.addEventListener('click', (event) => {
-    span.classList.toggle('article-open');
+    article.classList.toggle('article-open');
   })
 
   return article;
 }
+
+const newArticle = {
+  title: 'I like sandwiches WITH mayo',
+  date: '4/20',
+  firstParagraph: 'awwww yeah',
+  secondParagraph: 'it be like that sometimes',
+  thirdParagraph: 'hello world'
+}
+
+data.push(newArticle);
+
+data.forEach((article) => {
+  const articles = document.querySelector('.articles');
+  articles.appendChild(articleMaker(article));
+})
 
